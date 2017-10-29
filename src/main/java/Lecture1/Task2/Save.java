@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Created by Nusya on 29.10.2017.
  */
-@Target(value= ElementType.METHOD)
+@Target(value= {ElementType.METHOD, ElementType.FIELD})
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface Save {
 }
