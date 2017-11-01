@@ -12,4 +12,22 @@
         <date>19.12.2013</date>
         <departure>19:05</departure>
     </train>
+    <train id="2">
+        <from>Mukachevo</from>
+        <to>Kiev</to>
+        <date>18.12.2013</date>
+        <departure>19:05</departure>
+    </train>
+    <train id="3">
+        <from>Lviv</from>
+        <to>Beregovo</to>
+        <date>19.12.2013</date>
+        <departure>14:05</departure>
+    </train>
+    <train id="4">
+        <from>Lviv</from>
+        <to>Ternopil</to>
+        <date>19.12.2013</date>
+        <departure>20:05</departure>
+    </train>
 </trains>
