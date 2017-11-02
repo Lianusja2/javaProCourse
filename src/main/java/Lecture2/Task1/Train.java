@@ -14,12 +14,8 @@ public class Train {
     private int id;
     private String from;
     private String to;
-    private Date departureDate;
-    private String date;
-    private String time;
-
-
-
+    private Date date;
+    private long time;
 
     public int getId() {
         return id;
@@ -45,41 +41,38 @@ public class Train {
         this.to = to;
     }
 
-    public String getDate() {
-        DateFormat df = new SimpleDateFormat("dd.mm.yyyy") ;
-        return  df.format(departureDate);
+    public Date getDate() {
+        return  date;
 
     }
 
     public void setDate(String date) {
-        this.date = date;
-        if(time!=null){
-            setDepartureDate();}
+        DateFormat df = new SimpleDateFormat("dd.mm.yyyy") ;
+        try {
+            this.date = df.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public String getTime() {
+    public long getTime() {
+        return time;}
+
+    public String getTimeFormatted() {
         DateFormat df = new SimpleDateFormat("HH:mm") ;
-        return  df.format(departureDate);}
+        return  df.format(time);}
 
 
     public void setTime(String time) {
-        this.time = time;
-        if(date!=null){
-        setDepartureDate();}
+        DateFormat df = new SimpleDateFormat("HH:mm") ;
+
+        try {
+            this.time = df.parse(time).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-   private void setDepartureDate(){
-       DateFormat df = new SimpleDateFormat("dd.mm.yyyy HH:mm") ;
-       try {
-         departureDate = df.parse(date + " " +time);
-       } catch (ParseException e) {
-           e.printStackTrace();
-       }
-   }
-
-    public Date getDepartureDate() {
-        return departureDate;
-    }
 
     @Override
     public String toString() {
@@ -87,9 +80,8 @@ public class Train {
                 "id=" + id +
                 ", from='" + from + '\'' +
                 ", to='" + to + '\'' +
-                ", departureDate=" + departureDate +
-                ", date='" + getDate() + '\'' +
-                ", time='" + getTime() + '\'' +
+                ", date=" + date +
+                ", time=" + getTimeFormatted() +
                 '}';
     }
 }
